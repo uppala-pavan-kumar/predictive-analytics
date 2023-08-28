@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h2 class="text-center">Customer Churn Prediction</h2>
+            <hr>
+            
+            {% if prediction_text %}
+            <div class="alert alert-info">
+                {{ prediction_text }}
+            </div>
+            {% endif %}
+            
+            <form action="/predict/" method="post">
+                <div class="form-group">
+                    <label for="Age">Age:</label>
+                    <input type="number" class="form-control" id="Age" name="Age" required>
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender:</label>
+                    <select class="form-control" id="Gender" name="Gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Location">Location:</label>
+                    <input type="text" class="form-control" id="Location" name="Location" required>
+                </div>
+                <div class="form-group">
+                    <label for="Subscription_Length_Months">Subscription Length (Months):</label>
+                    <input type="number" class="form-control" id="Subscription_Length_Months" name="Subscription_Length_Months" required>
+                </div>
+                <div class="form-group">
+                    <label for="Monthly_Bill">Monthly Bill ($):</label>
+                    <input type="text" class="form-control" id="Monthly_Bill" name="Monthly_Bill" required>
+                </div>
+                <div class="form-group">
+                    <label for="Total_Usage_GB">Total Usage (GB):</label>
+                    <input type="text" class="form-control" id="Total_Usage_GB" name="Total_Usage_GB" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Predict Churn</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
